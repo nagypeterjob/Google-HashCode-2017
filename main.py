@@ -16,7 +16,7 @@ def priority_videos(videos):
 def avg_cache_delay(endpoints, size):
     avg_delays = {}
     for x in endpoints:
-        print(x)
+        #     print(x)
         for y in x['cache']:
             if y['id'] in avg_delays:
                 avg_delays[y['id']]['num'] += 1
@@ -58,6 +58,6 @@ videos = priority_videos(videos)
 caches2 = avg_cache_delay(endpoints, input_array[4])
 
 result = optimize(videos, caches2)
-for x in result:
-    print(x, result[x])
+# for x in result:
+#     print(x, result[x])
 read.writeFile(result)
