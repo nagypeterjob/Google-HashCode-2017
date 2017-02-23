@@ -52,21 +52,18 @@ def readFile(filename):
         videos[video_id]['requests'].append(endpoint_id)
 
     tmp = []
+
     for video in range(len(videos)):
         if len(videos[video]['requests']) != 0 and videos[video]['size'] <= cache_size:
             tmp.append(videos[video])
-
     videos = tmp
-
+    print(len(endpoints))
+    tmp = []
+    for endpoint in range(len(endpoints)):
+        if 'cache' in endpoints[endpoint]:
+            tmp.append(endpoints[endpoint])
+    endpoints = tmp
+    print(len(endpoints))
     return [video_num, endpoints_num, requests, caches, cache_size], videos, endpoints
 
-
-def writeFile(data):
-    file = open('result.txt', 'w')
-    file.write(str(len(data)) + '\n')
-    for x in data:
-        for y in data[x]:
-            file.write(str(y))
-            file.write(' ')
-        file.write('\n')
-    file.close()
+readFile('me_at_the_zoo.in')
