@@ -60,4 +60,13 @@ def readFile(filename):
 
     return [video_num, endpoints_num, requests, caches, cache_size], videos, endpoints
 
-readFile('me_at_the_zoo.in')
+
+def writeFile(data):
+    file = open('result.txt', 'w')
+    file.write(str(len(data)) + '\n')
+    for x in data:
+        for y in data[x]:
+            file.write(str(y))
+            file.write(' ')
+        file.write('\n')
+    file.close()
