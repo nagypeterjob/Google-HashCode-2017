@@ -1,16 +1,17 @@
 import numpy as np
 
+
 def readFile(filename):
-    file = open(filename,"r")
+    file = open(filename, "r")
     first_line = file.readline()
     first_line = first_line.split(' ')
-    [video_num, endpoints_num, requests , caches, cache_size] = first_line
+    [video_num, endpoints_num, requests, caches, cache_size] = first_line
 
     video_num = int(video_num)
     endpoints_num = int(endpoints_num)
     requests = int(requests)
     caches = int(caches)
-    cache_size =  int(cache_size)
+    cache_size = int(cache_size)
 
     videos = []
     endpoints = []
@@ -20,7 +21,8 @@ def readFile(filename):
 
     i = 0
     for obj in second_line:
-        videos.append({ 'id': i, 'size': int(obj), 'request_number' : 0 , 'requests' : []})
+        videos.append({'id': i, 'size': int(obj),
+                       'request_number': 0, 'requests': []})
         i += 1
 
     rows = file.readlines()
@@ -30,7 +32,7 @@ def readFile(filename):
     for a in range(endpoints_num):
         data = rows[index].rstrip().split(' ')
         num_of_caches = int(data[1])
-        endpoints.append({'id': a,'d_latency': int(data[0])})
+        endpoints.append({'id': a, 'd_latency': int(data[0])})
         index += 1
         if num_of_caches != 0:
             endpoints[a]['cache'] = []
@@ -40,7 +42,7 @@ def readFile(filename):
                 latency = int(data[1])
                 endpoints[a]['cache'].append({'id': id, 'latency': latency})
                 index += 1
-    while(index < len(rows) - 1 ):
+    while(index < len(rows) - 1):
         index += 1
         data = rows[index].rstrip().split(' ')
         video_id = int(data[0])
