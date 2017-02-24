@@ -60,23 +60,21 @@ def readFile(filename):
         if len(videos[video]['requests']) != 0 and videos[video]['size'] <= cache_size:
             tmp.append(videos[video])
     videos = tmp
-    # print(len(endpoints))
     tmp = []
     for endpoint in range(len(endpoints)):
         if 'cache' in endpoints[endpoint]:
             tmp.append(endpoints[endpoint])
     endpoints = tmp
-    # print(len(endpoints))
     return [video_num, endpoints_num, requests, caches, cache_size], videos, endpoints
 
 
 def writeFile(data):
-    file = open('result.txt', 'w')
+    file = open('result_2.txt', 'w')
     file.write(str(len(data)) + '\n')
     for x in data:
-        file.write(str(x))
+        file.write(str(x[0]))
         file.write(' ')
-        for y in data[x]:
+        for y in x[1]:
             file.write(str(y))
             file.write(' ')
         file.write('\n')
